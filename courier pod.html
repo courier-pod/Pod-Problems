@@ -29,6 +29,222 @@
     const timeConvert = (hours, minutes) => hours * 3600 + minutes * 60;
 
     console.log(timeConvert(2, 45));
+
+
+
+//--------------Create the function that takes an array with objects and returns the sum of people's budgets.------------
+    //
+    // Examples
+    // getBudgets([
+    //     { name: "John", age: 21, budget: 23000 },
+    //     { name: "Steve",  age: 32, budget: 40000 },
+    //     { name: "Martin",  age: 16, budget: 2700 }
+    // ]) ➞ 65700
+    //
+    // getBudgets([
+    //     { name: "John",  age: 21, budget: 29000 },
+    //     { name: "Steve",  age: 32, budget: 32000 },
+    //     { name: "Martin",  age: 16, budget: 1600 }
+    // ]) ➞ 62600
+
+    //VANILLA JS
+    //     function getBudgets(arr) {
+    //         return arr.reduce((a, b) => a + b.budget, 0);
+    //     }
+
+    // //ES6
+    const getBudgets = arr => arr.reduce((a,b) => a + b.budget, 0);
+    console.log(getBudgets([
+        {name: "John", age: 21, budget: 23000},
+        {name: "Steve", age: 32, budget: 40000},
+        {name: "Martin", age: 16, budget: 2700}
+    ]));
+    console.log(getBudgets([
+        {name: "John", age: 21, budget: 29000},
+        {name: "Steve", age: 32, budget: 32000},
+        {name: "Martin", age: 16, budget: 1600}
+    ]));
+
+
+//--------------------------------------------------Johnny's Trains for a Marathon--------------------------------------
+    //To train for an upcoming marathon, Johnny goes on one long-distance run each Saturday. He wants to track how often the number of miles he runs this Saturday exceeds the number of miles run the previous Saturday. This is called a progress day.
+    //
+    //     Create a function that takes in an array of miles run every Saturday and returns Johnny's total number of progress days.
+    //
+    // Examples
+    // progressDays([3, 4, 1, 2]) ➞ 2
+    // // There are two progress days, (3->4) and (1->2)
+    //
+    // progressDays([10, 11, 12, 9, 10]) ➞ 3
+    //
+    // progressDays([6, 5, 4, 3, 2, 9]) ➞ 1
+    //
+    // progressDays([9, 9])  ➞ 0
+
+    function progressDays(runs) {
+        var days=0;
+        for(i =1; i<runs.length; i++){
+            if(runs[i]>runs[i-1]){
+                days++;
+            }
+        }
+        return days;
+    }
+
+    console.log(progressDays([9, 9]));
+    console.log(progressDays([6, 5, 4, 3, 2, 9]));
+
+
+
+//---------------------------Create a function that concatenates n input arrays, where n is variable.-------------------
+    //
+    //     Examples
+    // concat([1, 2, 3], [4, 5], [6, 7]) ➞ [1, 2, 3, 4, 5, 6, 7]
+    //
+    // concat([1], [2], [3], [4], [5], [6], [7]) ➞ [1, 2, 3, 4, 5, 6, 7]
+    //
+    // concat([1, 2], [3, 4]) ➞ [1, 2, 3, 4]
+    //
+    // concat([4, 4, 4, 4, 4]) ➞ [4, 4, 4, 4, 4]
+
+    function concat(...args) {
+        let result=[];
+        return result.concat(...args)
+    }
+    console.log(concat([1], [2], [3], [4], [5], [6], [7]));
+    console.log(concat([4, 4, 4, 4, 4]));
+
+
+
+//------------------------------------------Convert Hours into Seconds--------------------------------------------------
+    // Write a function that converts hours into seconds.
+    //
+    //     Examples
+    // howManySeconds(2) ➞ 7200
+    //
+    // howManySeconds(10) ➞ 36000
+    //
+    // howManySeconds(24) ➞ 86400
+
+    // public class Challenge {
+    //     public static int howManySeconds(int hours) {
+    //     int min = (hours * 60) * 60;
+    //     return min;
+    // }
+    // }
+
+
+
+    //
+//--------------------------------------------------Array of Multiples-------------------------------------------------
+    // Create a function that takes two numbers as arguments (num, length) and returns an array of multiples of num up to length.
+    //
+    //     Examples
+    // arrayOfMultiples(7, 5) ➞ [7, 14, 21, 28, 35]
+    //
+    // arrayOfMultiples(12, 10) ➞ [12, 24, 36, 48, 60, 72, 84, 96, 108, 120]
+    //
+    // arrayOfMultiples(17, 6) ➞ [17, 34, 51, 68, 85, 102]
+
+    function arrayOfMultiples (num, length) {
+        var bucket = [];
+        for (var i = 1; i < length+1; i++){
+            var multiply = num * i;
+            bucket.push(multiply);
+        }
+        return bucket;
+    }
+
+
+
+//------------------------------------------------Multiply by Length--------------------------------------------
+    // Create a function to multiply all of the values in an array by the amount of values in the given array.
+    //
+    //     Examples
+    // multiplyByLength([2, 3, 1, 0]) ➞ [8, 12, 4, 0]
+    //
+    // multiplyByLength([4, 1, 1]) ➞ ([12, 3, 3])
+    //
+    // multiplyByLength([1, 0, 3, 3, 7, 2, 1]) ➞  [7, 0, 21, 21, 49, 14, 7]
+    //
+    // multiplyByLength([0]) ➞ ([0])
+
+    function multiplyByLength(arr) {
+        var bucket = [];
+        for (var i = 0; i < arr.length; i++){
+            var divide = arr[i] * arr.length;
+            bucket.push(divide);
+        }
+        return bucket;
+    }
+
+
+
+//------------------------------------Return the Remainder from Two Numbers-----------------------------------
+    // There is a single operator in Java, capable of providing the remainder of a division operation. Two numbers are passed as parameters. The first parameter divided by the second parameter will have a remainder, possibly zero. Return that value.
+    //
+    //     Examples
+    // remainder(1, 3) ➞ 1
+    //
+    // remainder(3, 4) ➞ 3
+    //
+    // remainder(-9, 45) ➞ -9
+    //
+    // remainder(5, 5) ➞ 0
+
+    // public class Challenge {
+    //     public static int remainder(int a, int b) {
+    //     return a % b;
+    // }
+    // }
+
+
+
+//-------------------------------------------Is the String Empty?---------------------------------------------------
+    //     Create a function that returns true if a string is empty and false otherwise.
+    //
+    //     Examples
+    // isEmpty("") ➞ true
+    //
+    // isEmpty(" ") ➞ false
+    //
+    // isEmpty("a") ➞ false
+
+    // public class Challenge {
+    //     public static boolean isEmpty(String str) {
+    //     if (str == ""){
+    //     return true;
+    // }else{
+    //     return false;
+    // }
+    // }
+    // }
+
+
+
+//--------------------------------------Reverse the Order of a String----------------------------------------------
+    // Create a method that takes a string as its argument and returns the string in reversed order.
+    //
+    //     Examples
+    // reverse("Hello World") ➞ "dlroW olleH"
+    //
+    // reverse("The quick brown fox.") ➞ ".xof nworb kciuq ehT"
+    //
+    // reverse("Edabit is really helpful!") ➞ "!lufpleh yllaer si tibadE"
+
+    // public class ReverseOrder {
+    //     public static String reverse(final String str) {
+    //     String reversed = new StringBuilder(str).reverse().toString();
+    //     return reversed;
+    // }
+    // }
+
+
+
+
+
+
+
 </script>
 
 </body>
